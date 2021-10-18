@@ -1,4 +1,5 @@
 from typing import List
+from statistics import median
 
 class DataOperations:
     dataset: List[float] = []
@@ -19,6 +20,12 @@ class DataOperations:
             return min <= val <= max
         filtered = filter(float_range, self.dataset)
         return sum(map(lambda x: 1, filtered))
+
+    def mean(self) -> float:
+        return sum(self.dataset) / len(self.dataset)
+
+    def median(self) -> float:
+        return median(self.dataset)
 
 if __name__ == "__main__":
     ds = DataOperations([1,2,3,4,5,1,1,1,1,2,2,2,3])
