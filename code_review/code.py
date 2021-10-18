@@ -1,22 +1,24 @@
+from typing import List
 
 class DataOperations:
-    dataset = []
+    dataset: List[float] = []
 
-    def __init__(self, dataset): 
+    def __init__(self, dataset: List[float]): 
        self.dataset = dataset
 
-    def first(self):
+    def first(self) -> float:
         return self.dataset[0]
     
-    def last(self):
+    def last(self) -> float:
         return self.dataset[-1]
 
-    def count_values(self, value, within=0.5):
+    def count_values(self, value, within=0.5) -> int:
         def float_range(val):
             min = value - within
             max = value + within
             return min <= val <= max
-        return sum([1 for x in self.dataset if float_range(x)])
+        filtered = filter(float_range, self.dataset)
+        return sum(map(lambda x: 1, filtered))
 
 if __name__ == "__main__":
     ds = DataOperations([1,2,3,4,5,1,1,1,1,2,2,2,3])

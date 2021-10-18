@@ -29,8 +29,8 @@ class TestDataOperations:
 
     def testCountSpeed(self):
         a = 2.0
-        time = timeit.timeit(lambda: self.d2.count_values(a), number=1000)
-        assert(time <= 2.0)       
+        time = timeit.timeit(lambda: self.d2.count_values(a), number=10000)
+        assert(time <= 16.0)       
 
 if __name__ == '__main__':
     unittest.main()
